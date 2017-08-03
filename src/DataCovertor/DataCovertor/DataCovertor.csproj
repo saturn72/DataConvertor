@@ -40,9 +40,12 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataReaderExtensions.cs" />
     <Compile Include="DatasourceType.cs" />
     <Compile Include="ExcelConvertor.cs" />
+    <Compile Include="ExcelConvertorSettings.cs" />
     <Compile Include="IConvertor.cs" />
+    <Compile Include="IConvertorSettings.cs" />
     <Compile Include="IFileConvertor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

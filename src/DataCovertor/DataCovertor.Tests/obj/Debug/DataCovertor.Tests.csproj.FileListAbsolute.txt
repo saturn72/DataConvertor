@@ -1,0 +1,13 @@
+C:\dev\github\DataCovertor\src\DataCovertor\DataCovertor.Tests\obj\Debug\DataCovertor.Tests.csprojResolveAssemblyReference.cache
+C:\dev\github\DataCovertor\src\DataCovertor\DataCovertor.Tests\bin\Debug\DataCovertor.Tests.dll
+C:\dev\github\DataCovertor\src\DataCovertor\DataCovertor.Tests\bin\Debug\DataCovertor.Tests.pdb
+C:\dev\github\DataCovertor\src\DataCovertor\DataCovertor.Tests\bin\Debug\DataCovertor.dll
+C:\dev\github\DataCovertor\src\DataCovertor\DataCovertor.Tests\bin\Debug\nunit.framework.dll
+C:\dev\github\DataCovertor\src\DataCovertor\DataCovertor.Tests\bin\Debug\Shouldly.dll
+C:\dev\github\DataCovertor\src\DataCovertor\DataCovertor.Tests\bin\Debug\DataCovertor.pdb
+C:\dev\github\DataCovertor\src\DataCovertor\DataCovertor.Tests\bin\Debug\nunit.framework.xml
+C:\dev\github\DataCovertor\src\DataCovertor\DataCovertor.Tests\obj\Debug\DataCovertor.Tests.dll
+C:\dev\github\DataCovertor\src\DataCovertor\DataCovertor.Tests\obj\Debug\DataCovertor.Tests.pdb
+C:\dev\github\DataCovertor\src\DataCovertor\DataCovertor.Tests\bin\Debug\Resources\good.xls
+C:\dev\github\DataCovertor\src\DataCovertor\DataCovertor.Tests\bin\Debug\ExcelDataReader.dll
+C:\dev\github\DataCovertor\src\DataCovertor\DataCovertor.Tests\bin\Debug\ExcelDataReader.xml

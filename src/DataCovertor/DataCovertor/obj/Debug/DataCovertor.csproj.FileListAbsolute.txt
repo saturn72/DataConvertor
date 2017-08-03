@@ -1,0 +1,7 @@
+C:\dev\github\DataCovertor\src\DataCovertor\DataCovertor\obj\Debug\DataCovertor.csprojResolveAssemblyReference.cache
+C:\dev\github\DataCovertor\src\DataCovertor\DataCovertor\bin\Debug\DataCovertor.dll
+C:\dev\github\DataCovertor\src\DataCovertor\DataCovertor\bin\Debug\DataCovertor.pdb
+C:\dev\github\DataCovertor\src\DataCovertor\DataCovertor\bin\Debug\ExcelDataReader.dll
+C:\dev\github\DataCovertor\src\DataCovertor\DataCovertor\bin\Debug\ExcelDataReader.xml
+C:\dev\github\DataCovertor\src\DataCovertor\DataCovertor\obj\Debug\DataCovertor.dll
+C:\dev\github\DataCovertor\src\DataCovertor\DataCovertor\obj\Debug\DataCovertor.pdb

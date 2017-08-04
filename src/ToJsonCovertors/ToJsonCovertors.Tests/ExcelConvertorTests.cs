@@ -58,7 +58,7 @@ namespace ToJsonCovertors.Tests
         [TestCaseSource(nameof(GetAllGoodFiles))]
         public void ExcelConvertor_ToExcel_ConvertsPasses(string file)
         {
-            const string expected = @"[{""id"":""1"",""sku"":""SKU_2"",""upcCode1"":""348132100244"",""description"":""Description_2"",""description2"":null,""productLine"":""NV"",""wholesale"":""7.9"",""_12MonthAvg"":""902.333333333333"",""someDate"":""12/12/2017 12:00:00 AM"",""someTime"":""12/31/1899 9:12:00 AM"",""someDecimal"":""12.12"",""someInt"":""12"",""soeFloat"":""12.33""},{""id"":""2"",""sku"":""SKU_3"",""upcCode1"":""896909001916"",""description"":""Description_3"",""description2"":null,""productLine"":""NET"",""wholesale"":""36"",""_12MonthAvg"":""832.833333333333"",""someDate"":""1/1/2014 12:00:00 AM"",""someTime"":""12/31/1899 9:32:00 PM"",""someDecimal"":""11"",""someInt"":""3"",""soeFloat"":""23.44""}]";
+            const string expected = @"[{""id"":""1"",""sku"":""SKU_2"",""upcCode1"":""348132100244"",""description"":""Description_2"",""description[2]"":null,""productLine"":""NV"",""wholesale"":""7.9"",""12MonthAvg"":""902.333333333333"",""someDate"":""12/12/2017 12:00:00 AM"",""someTime"":""12/31/1899 9:12:00 AM"",""someDecimal"":""12.12"",""someInt"":""12"",""someFloat"":""12.33""},{""id"":""2"",""sku"":""SKU_3"",""upcCode1"":""896909001916"",""description"":""Description_3"",""description[2]"":null,""productLine"":""NET"",""wholesale"":""36"",""12MonthAvg"":""832.833333333333"",""someDate"":""1/1/2014 12:00:00 AM"",""someTime"":""12/31/1899 9:32:00 PM"",""someDecimal"":""11"",""someInt"":""3"",""someFloat"":""23.44""}]";
             new ExcelConvertor().ToJson(file, null).ShouldBe(expected);
         }
 

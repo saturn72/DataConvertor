@@ -24,7 +24,7 @@ namespace DataCovertor.Tests
         public void ExcelConvertor_ToExcel_EmptyFile(string file)
         {
             var ec = new ExcelConvertor();
-            Should.Throw<ArgumentException>(() => ec.Convert(file, null));
+            Should.Throw<ArgumentException>(() => ec.ToJson(file, null));
         }
 
         private static string[] GetAllEmptyFiles()
@@ -41,11 +41,9 @@ namespace DataCovertor.Tests
             var ec = new ExcelConvertor();
             var settings = new ExcelConvertorSettings
             {
-                XmlRootNodeName = "items",
-                XmlIterativeNodeName = "item",
                 MandatoryColumns = new[] {"id", "wholesale", "UPC Code 1"}
             };
-            Should.Throw<ArgumentException>(() => ec.Convert(file, settings));
+            Should.Throw<ArgumentException>(() => ec.ToJson(file, settings));
         }
 
         private static string[] GetAllMissingFiles()
@@ -59,61 +57,8 @@ namespace DataCovertor.Tests
         [TestCaseSource(nameof(GetAllGoodFiles))]
         public void ExcelConvertor_ToExcel_ConvertsPasses(string file)
         {
-            var expected = @"<root>
-  <item>
-    <id>1</id>
-    <sku>SKU_2</sku>
-    <upcCode1>348132100244</upcCode1>
-    <description>Description_2</description>
-    <description2 />
-    <productLine>NV</productLine>
-    <wholesale>7.9</wholesale>
-    <_12MonthAvg>902.333333333333</_12MonthAvg>
-  </item>
-  <item>
-    <id>2</id>
-    <sku>SKU_3</sku>
-    <upcCode1>896909001916</upcCode1>
-    <description>Description_3</description>
-    <description2 />
-    <productLine>NET</productLine>
-    <wholesale>36</wholesale>
-    <_12MonthAvg>832.833333333333</_12MonthAvg>
-  </item>
-  <item>
-    <id>3</id>
-    <sku>SKU_4</sku>
-    <upcCode1>782421519100</upcCode1>
-    <description>Description_4</description>
-    <description2>PACK CD</description2>
-    <productLine>BAT</productLine>
-    <wholesale>1.25</wholesale>
-    <_12MonthAvg>765.416666666667</_12MonthAvg>
-  </item>
-  <item>
-    <id>4</id>
-    <sku>SKU_5</sku>
-    <upcCode1>9342851001494</upcCode1>
-    <description>Description_5</description>
-    <description2>FUNCTIONS</description2>
-    <productLine>NV</productLine>
-    <wholesale>30.5</wholesale>
-    <_12MonthAvg>728.083333333333</_12MonthAvg>
-  </item>
-  <item>
-    <id>5</id>
-    <sku>SKU_6</sku>
-    <upcCode1>9342851001661</upcCode1>
-    <description>Description_6</description>
-    <description2>FUNCTIONS</description2>
-    <productLine>NV</productLine>
-    <wholesale>30.5</wholesale>
-    <_12MonthAvg>684.416666666667</_12MonthAvg>
-  </item>
-</root>";
-            var ec = new ExcelConvertor();
-            var res = ec.Convert(file, null);
-            res.ToString().ShouldBe(expected);
+            const string expected = @"[{""id"":""1"",""sku"":""SKU_2"",""upcCode1"":""348132100244"",""description"":""Description_2"",""description2"":null,""productLine"":""NV"",""wholesale"":""7.9"",""_12MonthAvg"":""902.333333333333"",""someDate"":""12/12/2017 12:00:00 AM"",""someTime"":""12/31/1899 9:12:00 AM"",""someDecimal"":""12.12"",""someInt"":""12"",""soeFloat"":""12.33""},{""id"":""2"",""sku"":""SKU_3"",""upcCode1"":""896909001916"",""description"":""Description_3"",""description2"":null,""productLine"":""NET"",""wholesale"":""36"",""_12MonthAvg"":""832.833333333333"",""someDate"":""1/1/2014 12:00:00 AM"",""someTime"":""12/31/1899 9:32:00 PM"",""someDecimal"":""11"",""someInt"":""3"",""soeFloat"":""23.44""}]";
+            new ExcelConvertor().ToJson(file, null).ShouldBe(expected);
         }
 
         private static string[] GetAllGoodFiles()

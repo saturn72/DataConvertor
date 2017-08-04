@@ -1,8 +1,8 @@
 namespace DataCovertor
 {
-    public interface IFileConvertor<out TOutput, TSettings> : IConvertor<TOutput, TSettings>
+    public interface IFileConvertor<in TSettings> : IConvertor<TSettings>
         where TSettings : IConvertorSettings
     {
-        TOutput Convert(string filePath, TSettings settings);
+        string ToJson(string filePath, TSettings settings);
     }
 }

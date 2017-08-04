@@ -7,26 +7,26 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Xml.Linq;
 using ExcelDataReader;
+using fastJSON;
 
 #endregion
 
 namespace DataCovertor
 {
-    public class ExcelConvertor : IFileConvertor<XDocument, ExcelConvertorSettings>
+    public class ExcelConvertor : IFileConvertor<ExcelConvertorSettings>
     {
         public DatasourceType ConvertsFrom => DatasourceType.Excel;
 
-        public XDocument Convert(string filePath, ExcelConvertorSettings settings)
+        public string ToJson(string filePath, ExcelConvertorSettings settings)
         {
             using (var stream = File.Open(filePath, FileMode.Open, FileAccess.Read))
             {
-                return Convert(stream, settings);
+                return ToJson(stream, settings);
             }
         }
 
-        public XDocument Convert(Stream stream, ExcelConvertorSettings settings)
+        public string ToJson(Stream stream, ExcelConvertorSettings settings)
         {
             settings = ProcessSettings(settings);
 
@@ -38,31 +38,37 @@ namespace DataCovertor
                 if (!reader.Read() || !HandleHeaders(settings, reader, ref headers, ref mandatoryColumnsIndexes))
                     throw new ArgumentException("First row in excel cannot be empty");
 
-                var result = new XDocument(new XElement(settings.XmlRootNodeName));
+                var result = new List<IDictionary<string, string>>();
+
                 var shouldCheckMandatoryColumns = mandatoryColumnsIndexes.Any();
 
                 while (reader.Read())
                 {
                     var rowCells = reader.GetCurrentRow();
                     if (IsEmptyRow(rowCells))
-                        return result;
+                        return ToJson(result);
                     if (shouldCheckMandatoryColumns)
                         foreach (var mci in mandatoryColumnsIndexes)
                             if (rowCells[mci] == null)
                                 throw new ArgumentException(headers[mci] + " is required");
-                    var curElement = new XElement(settings.XmlIterativeNodeName);
+                    var curJsonNode = new Dictionary<string, string>();
                     for (var i = 0; i < headers.Length; i++)
-                        curElement.Add(new XElement(headers[i], rowCells[i]));
-                    result.Root.Add(curElement);
+                        curJsonNode.Add(headers[i], rowCells[i]?.ToString());
+                    result.Add(curJsonNode);
                 }
-                return result;
+                return JSON.ToJSON(result);
             }
+        }
+
+        private static string ToJson(IEnumerable<IDictionary<string, string>> json)
+        {
+            return JSON.ToJSON(json);
         }
 
         private static ExcelConvertorSettings ProcessSettings(ExcelConvertorSettings settings)
         {
             if (settings == null)
-                return ExcelConvertorSettings.Default;
+                return new ExcelConvertorSettings();
 
             var newMandatoryColumns = new List<string>();
             if (settings.MandatoryColumns.Any())
@@ -106,12 +112,12 @@ namespace DataCovertor
                 "@", "{", "|", "}", "~",
                 "[", "\\", "]", "^", "*"
             };
-            for (int i = 0; i < tmpHeader.Length; i++)
+            for (var i = 0; i < tmpHeader.Length; i++)
             {
                 foreach (var ixc in illegalXmlValues)
                     tmpHeader[i] = tmpHeader[i].Replace(ixc, string.Empty);
                 if (Regex.IsMatch(tmpHeader[i], @"^\d"))
-                    tmpHeader[i] = '_'+ tmpHeader[i];
+                    tmpHeader[i] = '_' + tmpHeader[i];
             }
             headers = tmpHeader;
             return true;

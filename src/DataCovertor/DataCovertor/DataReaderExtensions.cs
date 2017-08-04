@@ -1,5 +1,7 @@
 ﻿#region Usings
 
+using System;
+using System.Collections.Generic;
 using System.Data;
 
 #endregion
@@ -8,11 +10,31 @@ namespace DataCovertor
 {
     public static class DataReaderExtensions
     {
+        private static readonly IDictionary<Type, Func<IDataRecord, int, object>> ExtractDictionary =
+            new Dictionary<Type, Func<IDataRecord, int, object>>
+            {
+                {typeof(bool), (reader, index) => reader.GetBoolean(index)},
+                {typeof(byte), (reader, index) => reader.GetByte(index)},
+                {typeof(char), (reader, index) => reader.GetChar(index)},
+                {typeof(DateTime), (reader, index) => reader.GetDateTime(index)},
+                {typeof(decimal), (reader, index) => reader.GetDecimal(index)},
+                {typeof(double), (reader, index) => reader.GetDouble(index)},
+                {typeof(float), (reader, index) => reader.GetFloat(index)},
+                {typeof(Guid), (reader, index) => reader.GetGuid(index)},
+                {typeof(short), (reader, index) => reader.GetInt16(index)},
+                {typeof(int), (reader, index) => reader.GetInt32(index)},
+                {typeof(long), (reader, index) => reader.GetInt64(index)},
+                {typeof(string), (reader, index) => reader.GetString(index)}
+            };
+
         internal static object[] GetCurrentRow(this IDataRecord reader)
         {
             var res = new object[reader.FieldCount];
             for (var i = 0; i < reader.FieldCount; i++)
-                res[i] = reader.GetValue(i);
+            {
+                var fieldType = reader.GetFieldType(i);
+                res[i] = fieldType == null ? null : ExtractDictionary[fieldType](reader, i);
+            }
             return res;
         }
 

@@ -6,9 +6,9 @@ using System.IO;
 
 namespace DataCovertor
 {
-    public interface IConvertor<out TOutput, TSettings> where TSettings : IConvertorSettings
+    public interface IConvertor<in TSettings> where TSettings : IConvertorSettings
     {
         DatasourceType ConvertsFrom { get; }
-        TOutput Convert(Stream stream, TSettings settings);
+        string ToJson(Stream stream, TSettings settings);
     }
 }

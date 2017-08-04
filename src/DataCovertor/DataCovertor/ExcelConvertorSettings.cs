@@ -8,19 +8,12 @@ namespace DataCovertor
 {
     public class ExcelConvertorSettings : IConvertorSettings
     {
-        private static ExcelConvertorSettings _default;
+        private IEnumerable<string> _mandatoryColumns;
 
-        public static ExcelConvertorSettings Default => _default ?? (_default = new
-                                                            ExcelConvertorSettings
-                                                            {
-                                                                XmlRootNodeName = "root",
-                                                                XmlIterativeNodeName = "item",
-                                                                MandatoryColumns = new string[] { }
-                                                            });
-
-        public IEnumerable<string> MandatoryColumns { get; set; }
-
-        public string XmlRootNodeName { get; set; }
-        public string XmlIterativeNodeName { get; set; }
+        public IEnumerable<string> MandatoryColumns
+        {
+            get => _mandatoryColumns ?? (_mandatoryColumns = new string[] { });
+            set => _mandatoryColumns = value;
+        }
     }
 }

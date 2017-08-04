@@ -76,7 +76,7 @@ namespace ToJsonCovertors.Excel
                     if (!string.IsNullOrWhiteSpace(smc) && !string.IsNullOrEmpty(smc))
                         newMandatoryColumns.Add(smc);
 
-                settings.MandatoryColumns = JsonMetadata.ToCamelCase(newMandatoryColumns);
+                settings.MandatoryColumns = JsonCommon.ToCamelCase(newMandatoryColumns);
             }
             return settings;
         }
@@ -92,9 +92,9 @@ namespace ToJsonCovertors.Excel
             if (reader.FieldCount == 0 || reader.RowHasEmptyCells())
                 return false;
 
-            var currentRow = reader.GetCurrentRow().Select(s=>JsonMetadata.StringCleanup(s.ToString()));
+            var currentRow = reader.GetCurrentRow().Select(s=>JsonCommon.StringCleanup(s.ToString()));
 
-            var tmpHeader = JsonMetadata.ToCamelCase(currentRow).ToArray();
+            var tmpHeader = JsonCommon.ToCamelCase(currentRow).ToArray();
             
             var mci = new List<int>();
             for (var i = 0; i < tmpHeader.Count(); i++)

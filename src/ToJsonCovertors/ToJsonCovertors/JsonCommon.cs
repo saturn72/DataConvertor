@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ToJsonCovertors
 {
-    internal class JsonMetadata
+    internal class JsonCommon
     {
         internal static readonly string[] IllegalJsonNameChars =
         {

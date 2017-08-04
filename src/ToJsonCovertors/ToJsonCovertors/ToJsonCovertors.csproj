@@ -52,7 +52,7 @@
     <Compile Include="IConvertor.cs" />
     <Compile Include="IConvertorSettings.cs" />
     <Compile Include="IFileConvertor.cs" />
-    <Compile Include="JsonMetadata.cs" />
+    <Compile Include="JsonCommon.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

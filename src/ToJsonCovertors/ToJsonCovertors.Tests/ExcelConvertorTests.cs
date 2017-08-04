@@ -5,10 +5,11 @@ using System.IO;
 using System.Reflection;
 using NUnit.Framework;
 using Shouldly;
+using ToJsonCovertors.Excel;
 
 #endregion
 
-namespace DataCovertor.Tests
+namespace ToJsonCovertors.Tests
 {
     [TestFixture]
     public class ExcelConvertorTests

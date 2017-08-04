@@ -1,4 +1,4 @@
-﻿namespace DataCovertor
+﻿namespace ToJsonCovertors
 {
     public enum DatasourceType
     {

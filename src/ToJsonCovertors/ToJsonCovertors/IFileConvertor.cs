@@ -1,4 +1,4 @@
-namespace DataCovertor
+namespace ToJsonCovertors
 {
     public interface IFileConvertor<in TSettings> : IConvertor<TSettings>
         where TSettings : IConvertorSettings

@@ -4,7 +4,7 @@ using System.IO;
 
 #endregion
 
-namespace DataCovertor
+namespace ToJsonCovertors
 {
     public interface IConvertor<in TSettings> where TSettings : IConvertorSettings
     {

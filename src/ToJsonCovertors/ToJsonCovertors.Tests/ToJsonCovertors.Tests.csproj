@@ -7,10 +7,11 @@
     <ProjectGuid>{02C618C9-5A5A-44F0-9AE5-2CC2B92224AE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DataCovertor.Tests</RootNamespace>
-    <AssemblyName>DataCovertor.Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <RootNamespace>ToJsonCovertors.Tests</RootNamespace>
+    <AssemblyName>ToJsonCovertors.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,10 +32,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="nunit.framework, Version=3.7.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
-      <HintPath>..\packages\NUnit.3.7.1\lib\net45\nunit.framework.dll</HintPath>
+      <HintPath>..\packages\NUnit.3.7.1\lib\net40\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="Shouldly, Version=2.8.3.0, Culture=neutral, PublicKeyToken=6042cbcb05cbc941, processorArchitecture=MSIL">
-      <HintPath>..\packages\Shouldly.2.8.3\lib\net451\Shouldly.dll</HintPath>
+      <HintPath>..\packages\Shouldly.2.8.3\lib\net40\Shouldly.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -62,7 +63,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DataCovertor\DataCovertor.csproj">
+    <ProjectReference Include="..\ToJsonCovertors\ToJsonCovertors.csproj">
       <Project>{ECF82701-42DF-431D-A796-3DA9671E86C3}</Project>
       <Name>DataCovertor</Name>
     </ProjectReference>

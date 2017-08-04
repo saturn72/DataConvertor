@@ -7,10 +7,11 @@
     <ProjectGuid>{ECF82701-42DF-431D-A796-3DA9671E86C3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DataCovertor</RootNamespace>
-    <AssemblyName>DataCovertor</AssemblyName>
-    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <RootNamespace>ToJsonCovertors</RootNamespace>
+    <AssemblyName>ToJsonCovertors</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,20 +32,23 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ExcelDataReader, Version=3.1.0.0, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
-      <HintPath>..\packages\ExcelDataReader.3.1.0\lib\net45\ExcelDataReader.dll</HintPath>
+      <HintPath>..\packages\ExcelDataReader.3.1.0\lib\net20\ExcelDataReader.dll</HintPath>
     </Reference>
     <Reference Include="fastjson, Version=2.1.0.0, Culture=neutral, PublicKeyToken=6b75a806b86095cd, processorArchitecture=MSIL">
       <HintPath>..\packages\fastJSON.2.1.25\lib\net40\fastjson.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataReaderExtensions.cs" />
+    <Compile Include="Excel\DataReaderExtensions.cs" />
     <Compile Include="DatasourceType.cs" />
-    <Compile Include="ExcelConvertor.cs" />
-    <Compile Include="ExcelConvertorSettings.cs" />
+    <Compile Include="Excel\ExcelConvertor.cs" />
+    <Compile Include="Excel\ExcelConvertorSettings.cs" />
     <Compile Include="IConvertor.cs" />
     <Compile Include="IConvertorSettings.cs" />
     <Compile Include="IFileConvertor.cs" />

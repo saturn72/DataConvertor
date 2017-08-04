@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 #endregion
 
-namespace DataCovertor
+namespace ToJsonCovertors.Excel
 {
     public class ExcelConvertorSettings : IConvertorSettings
     {

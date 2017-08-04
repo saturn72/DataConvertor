@@ -12,7 +12,7 @@ using fastJSON;
 
 #endregion
 
-namespace DataCovertor
+namespace ToJsonCovertors.Excel
 {
     public class ExcelConvertor : IFileConvertor<ExcelConvertorSettings>
     {

@@ -6,7 +6,7 @@ using System.Data;
 
 #endregion
 
-namespace DataCovertor
+namespace ToJsonCovertors.Excel
 {
     public static class DataReaderExtensions
     {
